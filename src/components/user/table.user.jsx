@@ -3,15 +3,12 @@ import { useEffect, useState } from "react";
 import { FetchAllUserAPI } from "../../services/api.service";
 
 const UserTable = () => {
-  const [dataUsers, setDataUsers] = useState([
-    { _id: "cua", fullName: 22, email: "cua@gmail.com" },
-    { _id: "quyen", fullName: 22, email: "quyen@gmail.com" },
-  ]);
+  const [dataUsers, setDataUsers] = useState([]);
 
   useEffect(() => {
-    console.log(">>> run useEffect")
+    console.log(">>> run useEffect");
     loadUser();
-  }, [])
+  }, []);
 
   const columns = [
     {
@@ -63,10 +60,8 @@ const UserTable = () => {
 
   const loadUser = async () => {
     const res = await FetchAllUserAPI();
-    setDataUsers(res.data)
+    setDataUsers(res.data);
   };
-
-  
 
   return <Table columns={columns} dataSource={dataUsers} rowKey={"_id"} />;
 };
