@@ -2,7 +2,7 @@ import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { notification, Popconfirm, Table } from "antd";
 import UpdateUserModal from "./update.user.modal";
 import { useState } from "react";
-import ViewUserTable from "./view.user.detail";
+import ViewUserDetail from "./view.user.detail";
 import { DeleteUserAPI } from "../../services/api.service";
 
 const UserTable = (props) => {
@@ -94,11 +94,12 @@ const UserTable = (props) => {
         setDataUpdate={setDataUpdate}
         loadUser={loadUser}
       />
-      <ViewUserTable
+      <ViewUserDetail
         isDetailOpen={isDetailOpen}
         setIsDetailOpen={setIsDetailOpen}
         dataDetail={dataDetail}
         setDataDetail={setDataDetail}
+        loadUser={loadUser}
       />
     </>
   );
