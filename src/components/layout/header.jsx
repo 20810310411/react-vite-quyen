@@ -4,6 +4,8 @@ import {
   BookOutlined,
   HomeOutlined,
   SettingOutlined,
+  LoginOutlined,
+  AliwangwangOutlined
 } from "@ant-design/icons";
 import { Menu } from "antd";
 import { Children, useContext, useState } from "react";
@@ -36,21 +38,25 @@ const Header = () => {
       key: "books",
       icon: <BookOutlined />,
     },
-    {
-      label: "Cài đặt",
+
+    ...(!user.id ? [{
+      label: <Link to={"/login"}>Đăng nhập</Link>,
+      key: "login",
+      icon: <LoginOutlined />,
+    }] : []),
+
+    ...(user.id ? [{
+      label: `Welcome MTF ${user.fullName}`,
       key: "settings",
-      icon: <SettingOutlined />,
+      icon: <AliwangwangOutlined />,
       children: [
-        {
-          label: <Link to={"/login"}>Đăng nhập</Link>,
-          key: "login",
-        },
         {
           label: "Đăng xuất",
           key: "logout",
         },
       ],
-    },
+    }] : []),
+    
   ];
   return (
     <Menu
